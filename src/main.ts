@@ -1,5 +1,6 @@
 import showModal from "./showModal";
 import closeModal from "./closeModal";
+import apiCall from "./api";
 
 const modal =  document.querySelector<HTMLElement>('#forecast-modal');
 const modalBackground = document.querySelector('.modal-background');
@@ -9,3 +10,9 @@ const closeModalBtn = document.querySelector('#close-modal-btn');
 addForecastBtn?.addEventListener('click', () => showModal(modal));
 closeModalBtn?.addEventListener('click', () => closeModal(modal));
 modalBackground?.addEventListener('click', () => closeModal(modal));
+
+let city = prompt("Please enter city")
+
+if (city !== null){
+apiCall(city)
+}
