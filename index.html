@@ -4,10 +4,108 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <script type="module" src="/src/main.ts"></script>
+    <title>Weather App</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <section class="section">
+      <div class="container">
+        <!-- Header -->
+        <h1 class="title has-text-centered">Weather Forecasts</h1>
+  
+        <!-- Top Bar: Add Button + Search -->
+        <div class="level mb-4">
+          <div class="level-left">
+            <button class="button is-primary" id="add-forecast-btn">
+              <span class="icon"><i class="fas fa-plus"></i></span>
+              <span>Add Forecast</span>
+            </button>
+          </div>
+          <div class="level-right">
+            <div class="field has-addons">
+              <div class="control">
+                <input class="input" type="text" id="search-bar" placeholder="Search forecasts...">
+              </div>
+              <div class="control">
+                <button class="button is-info">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+<!-- Forecast Cards Container -->
+<div id="forecast-list" class="columns is-multiline">
+  <!-- Example of one forecast card -->
+  <div class="column is-6-tablet is-4-desktop">
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          London, GB
+        </p>
+        <button class="card-header-icon" aria-label="remove" title="Remove Forecast">
+          <span class="icon has-text-danger">
+            <i class="fas fa-trash"></i>
+          </span>
+        </button>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <figure class="image is-64x64 mb-3">
+            <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="Broken Clouds">
+          </figure>
+          <p><strong>Temperature:</strong> 15.3 °C</p>
+          <p><strong>Humidity:</strong> 72%</p>
+          <p><strong>Wind Speed:</strong> 4.1 m/s</p>
+          <p><strong>Pressure:</strong> 1012 hPa</p>
+          <p><strong>Sunrise:</strong> 05:00 AM</p>
+          <p><strong>Sunset:</strong> 08:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+        <!-- Pagination -->
+        <nav class="pagination is-centered mt-5" role="navigation" aria-label="pagination">
+          <a class="pagination-previous">Previous</a>
+          <a class="pagination-next">Next</a>
+          <ul class="pagination-list">
+            <!-- Pagination items -->
+          </ul>
+        </nav>
+      </div>
+    </section>
+  
+    <!-- Modal for Adding Forecast -->
+    <div class="modal" id="forecast-modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Add Weather Forecast</p>
+          <button class="delete" aria-label="close" id="close-modal-btn"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Search Form -->
+          <div class="field">
+            <label class="label">Search by City, ZIP, or Coordinates</label>
+            <div class="control has-icons-left">
+              <input class="input" type="text" placeholder="e.g. London, 90210, 48.85,2.35" id="forecast-search-input">
+              <span class="icon is-small is-left">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+          </div>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success" id="search-forecast-btn">Add</button>
+          <button class="button" id="cancel-modal-btn">Cancel</button>
+        </footer>
+      </div>
+    </div>
+  
+    <div class="container" id="notifications-container">
+    </div>
   </body>
 </html>
