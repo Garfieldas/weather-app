@@ -1,10 +1,13 @@
 import axios from 'axios';
 
 class Weather {
+    id: string;
     city: string;
     country: string;
     temp: number;
+    humidity: number;
     windSpeed: number;
+    pressure: number;
     sunrise: string;
     sunset: string;
 
@@ -12,14 +15,19 @@ class Weather {
         city: string,
         country: string,
         temp: number,
+        humidity: number,
         windSpeed: number,
+        pressure: number,
         sunrise: string,
         sunset: string
     ) {
+        this.id = crypto.randomUUID();
         this.city = city;
         this.country = country;
         this.temp = temp;
+        this.humidity = humidity;
         this.windSpeed = windSpeed;
+        this.pressure = pressure;
         this.sunrise = sunrise;
         this.sunset = sunset;
     }
@@ -61,15 +69,17 @@ const apiCall = async (search: string) => {
 
         const weather = new Weather(
             data.name,
-            data.sys.country,
+            sys.country,
             data.main.temp,
+            data.main.humidity,
             data.wind.speed,
+            data.main.pressure,
             sunrise,
             sunset
         );
-
         console.log(weather);
-        return weather;
+        console.log(data);
+
     } catch (error: any) {
         if (error.response?.data?.message) {
             console.error("Weather API error:", error.response.data.message);
