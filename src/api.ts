@@ -77,8 +77,8 @@ const apiCall = async (search: string) => {
             sunrise,
             sunset
         );
-        console.log(weather);
-        console.log(data);
+        
+        return weather;
 
     } catch (error: any) {
         if (error.response?.data?.message) {
