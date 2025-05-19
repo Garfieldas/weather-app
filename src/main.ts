@@ -11,4 +11,8 @@ addForecastBtn?.addEventListener('click', () => showModal(modal));
 closeModalBtn?.addEventListener('click', () => closeModal(modal));
 modalBackground?.addEventListener('click', () => closeModal(modal));
 
-apiCall();
+let city = prompt("Please enter city")
+
+if (city !== null){
+apiCall(city)
+}
