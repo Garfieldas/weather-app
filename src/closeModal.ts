@@ -1,4 +1,4 @@
-const closeModal = (modal: HTMLElement) => {
+const closeModal = (modal: HTMLElement | null) => {
     modal?.classList.remove('is-active')
 }
 

@@ -1,4 +1,4 @@
-const showModal = (modal: HTMLElement) => {
+const showModal = (modal: HTMLElement | null) => {
     modal?.classList.add("is-active");
 }
 
