@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="src/style.css">
     <script type="module" src="/src/main.ts"></script>
     <title>Weather App</title>
   </head>
   <body>
+    <div class="page-wrapper">
     <section class="section">
       <div class="container">
         <!-- Header -->
@@ -106,6 +107,20 @@
     </div>
   
     <div class="container" id="notifications-container">
+    </div>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p class="is-size-4">
+      <strong>&copy;</strong>
+      <script>
+        document.write(
+          new Date().getFullYear()
+        )
+      </script>
+       <a href="https://github.com/Garfieldas/weather-app" class="has-text-primary">Garfieldas</a>
+    </p>
+  </div>
+</footer>
     </div>
   </body>
 </html>
