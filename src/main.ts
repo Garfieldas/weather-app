@@ -22,6 +22,7 @@ searchForecastBtn?.addEventListener('click', async () => {
         closeModal(modal);
         console.log(weather);
         renderWeather(weather);
+        forecastSearchInput.value = '';
     }
     }
 })
