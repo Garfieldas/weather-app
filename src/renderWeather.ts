@@ -53,7 +53,8 @@ const renderWeather = (weather: Weather) => {
     content.appendChild(figure);
 
     const img = document.createElement('img');
-    img.setAttribute('src', 'https://openweathermap.org/img/wn/04d@2x.png');
+    img.setAttribute('src', `https://openweathermap.org/img/wn/${weather.icon}@2x.png`);
+    img.setAttribute('alt', 'Weather icon');
     figure.appendChild(img);
 
     const parameters = ['Temperature: ', 'Humidity: ', 'Wind Speed: ',

@@ -35,6 +35,8 @@ const apiCall = async (search: string) => {
         const sunrise = formatTime(sys.sunrise, timeZone);
         const sunset = formatTime(sys.sunset, timeZone);
 
+        const iconCode = data.weather[0].icon;
+
         const weather = new Weather(
             data.name,
             sys.country,
@@ -43,7 +45,9 @@ const apiCall = async (search: string) => {
             data.wind.speed,
             data.main.pressure,
             sunrise,
-            sunset
+            sunset,
+            iconCode
+
         );
         
         return weather;
