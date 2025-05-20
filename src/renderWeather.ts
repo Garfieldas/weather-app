@@ -1,9 +1,11 @@
 import { Weather } from "./Weather";
+import removeForecast from "./removeForecast";
 
 const renderWeather = (weather: Weather) => {
 
     const container = document.querySelector('#forecast-list');
     const column = document.createElement('div');
+    column.setAttribute('id', weather.id);
     column.classList.add('column');
     column.classList.add('is-6-tablet');
     column.classList.add('is-4-desktop');
@@ -85,6 +87,10 @@ const renderWeather = (weather: Weather) => {
     deleteBtn.classList.add('is-danger');
     deleteBtn.textContent = 'Remove';
     content.appendChild(deleteBtn);
+
+    deleteBtn.addEventListener('click', () => {
+        removeForecast(weather.id)
+    })
 
 }
 
