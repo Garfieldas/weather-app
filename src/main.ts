@@ -1,6 +1,7 @@
 import showModal from "./showModal";
 import closeModal from "./closeModal";
 import apiCall from "./api";
+import renderWeather from "./renderWeather";
 
 const modal =  document.querySelector<HTMLElement>('#forecast-modal');
 const modalBackground = document.querySelector('.modal-background');
@@ -17,7 +18,10 @@ searchForecastBtn?.addEventListener('click', async () => {
     const search = forecastSearchInput?.value;
     if (search) {
         const weather = await apiCall(search);
+        if (weather) {
         closeModal(modal);
         console.log(weather);
+        renderWeather(weather);
+    }
     }
 })
