@@ -19,6 +19,7 @@ window.addEventListener("load", () => {
     if (previousForecasts){
         Object.keys(previousForecasts).forEach(key => {
             renderWeather(previousForecasts[key]);
+            forecastData.push(previousForecasts[key]);
         })
     }
 })
