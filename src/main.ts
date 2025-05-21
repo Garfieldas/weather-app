@@ -2,6 +2,8 @@ import showModal from "./showModal";
 import closeModal from "./closeModal";
 import apiCall from "./api";
 import renderWeather from "./renderWeather";
+import saveToStorage from "./saveToStorage";
+import readStorage from "./readStorage";
 
 const modal =  document.querySelector<HTMLElement>('#forecast-modal');
 const modalBackground = document.querySelector('.modal-background');
@@ -9,6 +11,18 @@ const addForecastBtn = document.querySelector('#add-forecast-btn');
 const closeModalBtn = document.querySelector('#close-modal-btn');
 const forecastSearchInput = document.querySelector<HTMLInputElement>('#forecast-search-input');
 const searchForecastBtn = document.querySelector('#search-forecast-btn');
+
+const forecastData: Array<object> = [];
+
+window.addEventListener("load", () => {
+    const previousForecasts = readStorage();
+    if (previousForecasts){
+        Object.keys(previousForecasts).forEach(key => {
+            renderWeather(previousForecasts[key]);
+            forecastData.push(previousForecasts[key]);
+        })
+    }
+})
 
 addForecastBtn?.addEventListener('click', () => showModal(modal));
 closeModalBtn?.addEventListener('click', () => closeModal(modal));
@@ -20,9 +34,10 @@ searchForecastBtn?.addEventListener('click', async () => {
         const weather = await apiCall(search);
         if (weather) {
         closeModal(modal);
-        console.log(weather);
         renderWeather(weather);
         forecastSearchInput.value = '';
+        forecastData.push(weather);
+        saveToStorage(forecastData);
     }
     }
 })
