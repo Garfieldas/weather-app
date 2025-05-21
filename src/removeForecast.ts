@@ -1,5 +1,6 @@
 import saveToStorage from "./saveToStorage";
 import readStorage from "./readStorage";
+import showNotification from "./showNotification";
 
 const removeForecast = (id: string) =>
 {
@@ -8,6 +9,7 @@ const removeForecast = (id: string) =>
     const filtered = storedForecasts.filter((forecast: {id: string}) => forecast.id !== id);
     saveToStorage(filtered);
     forecastCard?.remove();
+    showNotification('Deleted successfully', 'is-success');
 }
 
 export default removeForecast;

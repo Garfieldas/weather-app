@@ -4,7 +4,7 @@ import apiCall from "./api";
 import renderWeather from "./renderWeather";
 import saveToStorage from "./saveToStorage";
 import readStorage from "./readStorage";
-import showNofication from "./showNofication";
+import showNotification from "./showNotification";
 
 const modalBackground = document.querySelector('.modal-background');
 const addForecastBtn = document.querySelector('#add-forecast-btn');
@@ -41,7 +41,7 @@ searchForecastBtn?.addEventListener('click', async () => {
         renderWeather(weather);
         forecastData.push(weather);
         saveToStorage(forecastData);
-        showNofication('Added successfully', 'is-success');
+        showNotification('Added successfully', 'is-success');
     }
     }
 })
