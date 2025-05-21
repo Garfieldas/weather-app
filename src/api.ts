@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { Weather } from './Weather';
+import closeModal from './closeModal';
+import showNofication from './showNofication';
 
 const apiCall = async (search: string) => {
     const API_KEY = 'b545f223d084995689161a761876e21e';
@@ -53,10 +55,15 @@ const apiCall = async (search: string) => {
         return weather;
 
     } catch (error: any) {
+
         if (error.response?.data?.message) {
             console.error("Weather API error:", error.response.data.message);
+            showNofication(error.response.data.message, 'is-danger');
+            closeModal();
         } else {
             console.error("Unknown error:", error);
+            showNofication(error, 'is-danger');
+            closeModal();
         }
     }
 };

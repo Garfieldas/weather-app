@@ -1,4 +1,6 @@
-const showModal = (modal: HTMLElement | null) => {
+const showModal = () => {
+    
+    const modal =  document.querySelector<HTMLElement>('#forecast-modal');
     modal?.classList.add("is-active");
 }
 
