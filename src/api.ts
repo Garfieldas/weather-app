@@ -61,8 +61,7 @@ const apiCall = async (search: string) => {
             showNotification(error.response.data.message, 'is-danger');
             closeModal();
         } else {
-            console.error("Unknown error:", error);
-            showNotification(error, 'is-danger');
+            showNotification('Unexpected error occurred', 'is-danger');
             closeModal();
         }
     }
