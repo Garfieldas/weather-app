@@ -64,6 +64,10 @@ searchForecastBtn?.addEventListener('click', async () => {
                 showNotification('Forecast already exists', 'is-danger');
             }
         }
+        else {
+            closeModal();
+            showNotification('Request failed', 'is-danger');
+        }
     }
 }
 );
