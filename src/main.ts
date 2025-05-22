@@ -12,32 +12,27 @@ const closeModalBtn = document.querySelector('#close-modal-btn');
 const forecastSearchInput = document.querySelector<HTMLInputElement>('#forecast-search-input');
 const searchForecastBtn = document.querySelector('#search-forecast-btn');
 
-const nextBtn = document.querySelector('.pagination-next');
-const previousBtn = document.querySelector('.pagination-previous')
-
-const forecastData: Array<object> = [];
+const nextBtn = document.querySelector<HTMLElement>('.pagination-next');
+const previousBtn = document.querySelector<HTMLElement>('.pagination-previous');
 
 window.addEventListener("load", () => {
     const previousForecasts = readStorage();
     if (previousForecasts) {
         pagination(previousForecasts);
-        Object.keys(previousForecasts).forEach(key => {
-            forecastData.push(previousForecasts[key]);
-        })
     }
-})
+});
 
 nextBtn?.addEventListener("click", () => {
     const nextPage = getPage() + 1;
     setPage(nextPage);
     pagination(readStorage());
-})
+});
 
 previousBtn?.addEventListener("click", () => {
     const previousPage = getPage() - 1;
     setPage(previousPage);
     pagination(readStorage());
-})
+});
 
 addForecastBtn?.addEventListener('click', () => {
     showModal();
@@ -59,8 +54,8 @@ searchForecastBtn?.addEventListener('click', async () => {
             );
             if (!exists) {
                 closeModal();
-                forecastData.push(weather);
-                saveToStorage(forecastData);
+                const updatedForecasts = [...storedForecasts, weather];
+                saveToStorage(updatedForecasts);
                 pagination(readStorage());
                 showNotification('Added successfully', 'is-success');
             }
