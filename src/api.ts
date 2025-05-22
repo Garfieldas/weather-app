@@ -64,7 +64,7 @@ const apiCall = async (search: string) => {
             showNotification(error.response.data.message, 'is-danger');
             closeModal();
         } else {
-            showNotification('Unexpected error occurred', 'is-danger');
+            showNotification('Request failed', 'is-danger');
             closeModal();
         }
     }
