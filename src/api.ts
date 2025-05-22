@@ -61,7 +61,6 @@ const apiCall = async (search: string) => {
     } catch (error: any) {
 
         if (error.response?.data?.message) {
-            console.error("Weather API error:", error.response.data.message);
             showNotification(error.response.data.message, 'is-danger');
             closeModal();
         } else {
