@@ -9,7 +9,7 @@ const removeForecast = (id: string) =>
     const filtered = storedForecasts.filter((forecast: {id: string}) => forecast.id !== id);
     saveToStorage(filtered);
     forecastCard?.remove();
-    showNotification('Deleted successfully', 'is-success');
+    showNotification('Deleted successfully', 'is-warning');
 }
 
 export default removeForecast;

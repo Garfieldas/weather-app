@@ -1,4 +1,4 @@
-const showNotification = (message: string, type: 'is-success' | 'is-danger', duration = 3000) => {
+const showNotification = (message: string, type: 'is-success' | 'is-danger' | 'is-warning', duration = 3000) => {
 
     const container = document.querySelector('#notifications-container');
 
