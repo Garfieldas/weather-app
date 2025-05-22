@@ -9,6 +9,8 @@ export class Weather {
     sunrise: string;
     sunset: string;
     icon: string;
+    lon: number;
+    lat: number;
 
     constructor(
         city: string,
@@ -19,7 +21,9 @@ export class Weather {
         pressure: number,
         sunrise: string,
         sunset: string,
-        icon: string
+        icon: string,
+        lon: number,
+        lat: number
     ) {
         this.id = crypto.randomUUID();
         this.city = city;
@@ -31,5 +35,7 @@ export class Weather {
         this.sunrise = sunrise;
         this.sunset = sunset;
         this.icon = icon;
+        this.lon = lon;
+        this.lat = lat;
     }
 }

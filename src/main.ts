@@ -16,7 +16,7 @@ const forecastData: Array<object> = [];
 
 window.addEventListener("load", () => {
     const previousForecasts = readStorage();
-    if (previousForecasts){
+    if (previousForecasts) {
         Object.keys(previousForecasts).forEach(key => {
             renderWeather(previousForecasts[key]);
             forecastData.push(previousForecasts[key]);
@@ -37,11 +37,23 @@ searchForecastBtn?.addEventListener('click', async () => {
     if (search) {
         const weather = await apiCall(search);
         if (weather) {
-        closeModal();
-        renderWeather(weather);
-        forecastData.push(weather);
-        saveToStorage(forecastData);
-        showNotification('Added successfully', 'is-success');
+            const storedForecasts = readStorage();
+            const storedForecastsList = storedForecasts ? Object.values(storedForecasts) : [];
+            const exists = storedForecastsList.some((item: any) =>
+                item.lon === weather.lon && item.lat === weather.lat
+            );
+            if (!exists) {
+                closeModal();
+                renderWeather(weather);
+                forecastData.push(weather);
+                saveToStorage(forecastData);
+                showNotification('Added successfully', 'is-success');
+            }
+            else {
+                closeModal();
+                showNotification('Forecast already exists', 'is-danger');
+            }
+        }
     }
-    }
-})
+}
+);
