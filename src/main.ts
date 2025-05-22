@@ -1,10 +1,10 @@
 import showModal from "./showModal";
 import closeModal from "./closeModal";
 import apiCall from "./api";
-import renderWeather from "./renderWeather";
 import saveToStorage from "./saveToStorage";
 import readStorage from "./readStorage";
 import showNotification from "./showNotification";
+import {pagination, getPage, setPage} from "./pagination";
 
 const modalBackground = document.querySelector('.modal-background');
 const addForecastBtn = document.querySelector('#add-forecast-btn');
@@ -12,16 +12,31 @@ const closeModalBtn = document.querySelector('#close-modal-btn');
 const forecastSearchInput = document.querySelector<HTMLInputElement>('#forecast-search-input');
 const searchForecastBtn = document.querySelector('#search-forecast-btn');
 
+const nextBtn = document.querySelector('.pagination-next');
+const previousBtn = document.querySelector('.pagination-previous')
+
 const forecastData: Array<object> = [];
 
 window.addEventListener("load", () => {
     const previousForecasts = readStorage();
     if (previousForecasts) {
+        pagination(previousForecasts);
         Object.keys(previousForecasts).forEach(key => {
-            renderWeather(previousForecasts[key]);
             forecastData.push(previousForecasts[key]);
         })
     }
+})
+
+nextBtn?.addEventListener("click", () => {
+    const nextPage = getPage() + 1;
+    setPage(nextPage);
+    pagination(readStorage());
+})
+
+previousBtn?.addEventListener("click", () => {
+    const previousPage = getPage() - 1;
+    setPage(previousPage);
+    pagination(readStorage());
 })
 
 addForecastBtn?.addEventListener('click', () => {
@@ -44,9 +59,9 @@ searchForecastBtn?.addEventListener('click', async () => {
             );
             if (!exists) {
                 closeModal();
-                renderWeather(weather);
                 forecastData.push(weather);
                 saveToStorage(forecastData);
+                pagination(readStorage());
                 showNotification('Added successfully', 'is-success');
             }
             else {
