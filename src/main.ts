@@ -12,8 +12,8 @@ const closeModalBtn = document.querySelector('#close-modal-btn');
 const forecastSearchInput = document.querySelector<HTMLInputElement>('#forecast-search-input');
 const searchForecastBtn = document.querySelector('#search-forecast-btn');
 
-const nextBtn = document.querySelector<HTMLElement>('.pagination-next');
-const previousBtn = document.querySelector<HTMLElement>('.pagination-previous');
+export const nextBtn = document.querySelector<HTMLElement>('.pagination-next');
+export const previousBtn = document.querySelector<HTMLElement>('.pagination-previous');
 
 window.addEventListener("load", () => {
     const previousForecasts = readStorage();
