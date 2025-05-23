@@ -1,5 +1,5 @@
-import { Weather } from "./Weather";
-import removeForecast from "./removeForecast";
+import { Weather } from "../features/Weather";
+import removeForecast from "../features/removeForecast";
 
 const renderWeather = (weather: Weather) => {
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { Weather } from './Weather';
-import { closeModal } from './modal';
-import showNotification from './showNotification';
+import { Weather } from '../features/Weather';
+import { closeModal } from '../components/modal';
+import showNotification from '../utils/showNotification';
 
 const apiCall = async (search: string) => {
     const API_KEY = 'b545f223d084995689161a761876e21e';

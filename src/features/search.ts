@@ -1,6 +1,6 @@
-import { readStorage } from "./storage";
+import { readStorage } from "../utils/storage";
 import { Weather } from "./Weather";
-import showNotification from "./showNotification";
+import showNotification from "../utils/showNotification";
 import { pagination } from "./pagination";
 
 const search = (query: string) => {

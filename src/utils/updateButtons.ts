@@ -1,5 +1,5 @@
-import { nextBtn, previousBtn } from "./main"
-import { totalPages, getPage } from "./pagination";
+import { nextBtn, previousBtn } from "../main";
+import { totalPages, getPage } from "../features/pagination";
 
 const updateButtons = () => {
 

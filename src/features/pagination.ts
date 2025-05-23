@@ -1,7 +1,7 @@
-import { readStorage } from "./storage";
-import renderWeather from "./renderWeather";
+import { readStorage } from "../utils/storage";
+import renderWeather from "../components/renderWeather";
 import { Weather } from "./Weather";
-import updateButtons from "./updateButtons";
+import updateButtons from "../utils/updateButtons";
 
 let page = 1;
 const itemsPerPage = 10;

@@ -1,10 +1,10 @@
-import { readStorage, saveToStorage } from "./storage";
-import { showModal, closeModal } from "./modal";
-import apiCall from "./api";
-import showNotification from "./showNotification";
-import { pagination, getPage, setPage } from "./pagination";
-import { performSearch } from "./search";
-import updateForecasts from "./updateForecasts";
+import { readStorage, saveToStorage } from "./utils/storage";
+import { showModal, closeModal } from "./components/modal";
+import apiCall from "./api/api";
+import showNotification from "./utils/showNotification";
+import { pagination, getPage, setPage } from "./features/pagination";
+import { performSearch } from "./features/search";
+import updateForecasts from "./features/updateForecasts";
 
 const modalBackground = document.querySelector(".modal-background");
 const addForecastBtn = document.querySelector("#add-forecast-btn");

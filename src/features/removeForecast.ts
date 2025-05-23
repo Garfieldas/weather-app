@@ -1,5 +1,5 @@
-import { readStorage, saveToStorage } from "./storage";
-import showNotification from "./showNotification";
+import { readStorage, saveToStorage } from "../utils/storage";
+import showNotification from "../utils/showNotification";
 import { pagination, getPage, setPage, totalPages } from "./pagination";
 import { Weather } from "./Weather";
 

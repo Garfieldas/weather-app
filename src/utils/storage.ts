@@ -1,4 +1,4 @@
-import { Weather } from "./Weather";
+import { Weather } from "../features/Weather";
 
 const saveToStorage = (forecast: Array<Weather> | Record<string, Weather>) => {
 
