@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid'
+
 export class Weather {
     id: string;
     city: string;
@@ -25,7 +27,7 @@ export class Weather {
         lon: number,
         lat: number
     ) {
-        this.id = crypto.randomUUID();
+        this.id = uuidv4();
         this.city = city;
         this.country = country;
         this.temp = temp;
