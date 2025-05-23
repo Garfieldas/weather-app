@@ -23,7 +23,7 @@ window.addEventListener("load", () => {
         pagination(previousForecasts);
     }
     const miliSeconds = 1000;
-    const seconds = 10 * miliSeconds;
+    const seconds = 120 * miliSeconds;
     setInterval(updateForecasts, seconds);
 });
 
@@ -70,7 +70,8 @@ searchForecastBtn?.addEventListener('click', async () => {
             const storedForecasts = readStorage();
             const storedForecastsList = storedForecasts ? Object.values(storedForecasts) : [];
             const exists = storedForecastsList.some((item: any) =>
-                item.lon === weather.lon && item.lat === weather.lat
+                item.lon === weather.lon && item.lat === weather.lat ||
+                item.city === weather.city
             );
             if (!exists) {
                 closeModal();

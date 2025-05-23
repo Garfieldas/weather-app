@@ -30,7 +30,7 @@ const performSearch = (query: string) => {
             acc[item.id] = item;
             return acc;
         }, {} as Record<string, Weather>);
-        pagination(resultsRecord);
+        pagination(resultsRecord, 1);
     }
 }
 
