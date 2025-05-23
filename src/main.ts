@@ -55,6 +55,7 @@ previousBtn?.addEventListener("click", () => {
 addForecastBtn?.addEventListener("click", () => {
   showModal();
   forecastSearchInput && (forecastSearchInput.value = "");
+  forecastSearchInput?.focus();
 });
 
 closeModalBtn?.addEventListener("click", () => closeModal());
