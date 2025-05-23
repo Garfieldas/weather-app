@@ -6,6 +6,7 @@ import readStorage from "./readStorage";
 import showNotification from "./showNotification";
 import {pagination, getPage, setPage} from "./pagination";
 import { performSearch } from "./search";
+import updateForecasts from "./updateForecasts";
 
 const modalBackground = document.querySelector('.modal-background');
 const addForecastBtn = document.querySelector('#add-forecast-btn');
@@ -23,6 +24,9 @@ window.addEventListener("load", () => {
     if (previousForecasts) {
         pagination(previousForecasts);
     }
+    const miliSeconds = 1000;
+    const seconds = 10 * miliSeconds;
+    setInterval(updateForecasts, seconds);
 });
 
 searchBar?.addEventListener('keydown', (e) => {
