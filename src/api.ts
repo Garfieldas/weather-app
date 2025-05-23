@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Weather } from './Weather';
-import closeModal from './closeModal';
+import { closeModal } from './modal';
 import showNotification from './showNotification';
 
 const apiCall = async (search: string) => {

@@ -1,4 +1,4 @@
-import readStorage from "./readStorage";
+import { readStorage } from "./storage";
 import { Weather } from "./Weather";
 import showNotification from "./showNotification";
 import { pagination } from "./pagination";

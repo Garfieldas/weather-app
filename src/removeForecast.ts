@@ -1,5 +1,4 @@
-import saveToStorage from "./saveToStorage";
-import readStorage from "./readStorage";
+import { readStorage, saveToStorage } from "./storage";
 import showNotification from "./showNotification";
 import { pagination, getPage, setPage, totalPages } from "./pagination";
 

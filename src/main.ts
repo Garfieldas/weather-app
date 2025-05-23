@@ -1,8 +1,6 @@
-import showModal from "./showModal";
-import closeModal from "./closeModal";
+import { readStorage, saveToStorage } from "./storage";
+import { showModal, closeModal } from "./modal";
 import apiCall from "./api";
-import saveToStorage from "./saveToStorage";
-import readStorage from "./readStorage";
 import showNotification from "./showNotification";
 import {pagination, getPage, setPage} from "./pagination";
 import { performSearch } from "./search";

@@ -1,3 +1,8 @@
+const saveToStorage = (forecast: Array<object>) => {
+
+    localStorage.setItem('forecast', JSON.stringify(forecast))
+}
+
 const readStorage = () => {
 
        const storedForecasts = localStorage.getItem('forecast');
@@ -7,4 +12,4 @@ const readStorage = () => {
        }
 }
 
-export default readStorage;
+export {saveToStorage, readStorage};

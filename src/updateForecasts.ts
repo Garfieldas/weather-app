@@ -1,7 +1,6 @@
+import { readStorage, saveToStorage } from "./storage";
 import apiCall from "./api";
 import { pagination } from "./pagination";
-import readStorage from "./readStorage";
-import saveToStorage from "./saveToStorage";
 import { Weather } from "./Weather";
 
 const updateForecasts = async () => {

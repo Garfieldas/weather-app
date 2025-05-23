@@ -1,10 +1,10 @@
+import { readStorage } from "./storage";
 import renderWeather from "./renderWeather";
 import { Weather } from "./Weather";
 import updateButtons from "./updateButtons";
-import readStorage from "./readStorage";
 
 let page = 1;
-const itemsPerPage = 2;
+const itemsPerPage = 10;
 const getPage = () => page;
 const setPage = (newPage: number) => {
     page = newPage;
