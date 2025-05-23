@@ -1,15 +1,26 @@
-const saveToStorage = (forecast: Array<object>) => {
+import { Weather } from "./Weather";
 
-    localStorage.setItem('forecast', JSON.stringify(forecast))
+const saveToStorage = (forecast: Array<Weather> | Record<string, Weather>) => {
+
+    let record: Record<string, Weather>;
+    if (Array.isArray(forecast)) {
+        record = forecast.reduce((acc, item) => {
+            acc[item.id] = item;
+            return acc;
+        }, {} as Record<string, Weather>);
+    } else {
+        record = forecast;
+    }
+
+    localStorage.setItem('forecast', JSON.stringify(record));
 }
 
-const readStorage = () => {
-
-       const storedForecasts = localStorage.getItem('forecast');
-       if (storedForecasts){
-            const forecastData = JSON.parse(storedForecasts);
-            return forecastData;
-       }
+const readStorage = (): Record<string, Weather> => {
+    const storedForecasts = localStorage.getItem('forecast');
+    if (storedForecasts) {
+        return JSON.parse(storedForecasts);
+    }
+    return {};
 }
 
-export {saveToStorage, readStorage};
+export { saveToStorage, readStorage };

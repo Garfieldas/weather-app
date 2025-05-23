@@ -66,6 +66,7 @@ const apiCall = async (search: string) => {
         } else {
             showNotification('Request failed', 'is-danger');
             closeModal();
+            console.error(error);
         }
     }
 };

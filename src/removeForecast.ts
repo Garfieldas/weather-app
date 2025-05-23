@@ -1,15 +1,18 @@
 import { readStorage, saveToStorage } from "./storage";
 import showNotification from "./showNotification";
 import { pagination, getPage, setPage, totalPages } from "./pagination";
+import { Weather } from "./Weather";
 
-const removeForecast = (id: string) =>
-{
+const removeForecast = (id: string) => {
     const forecastCard = document.getElementById(id);
     const storedForecasts = readStorage();
-    const filtered = storedForecasts.filter((forecast: {id: string}) => forecast.id !== id);
+    const forecastList: Weather[] = Object.values(storedForecasts);
+
+    const filtered = forecastList.filter((forecast) => forecast.id !== id);
+
     saveToStorage(filtered);
     forecastCard?.remove();
-    showNotification('Deleted successfully', 'is-warning');
+    showNotification("Deleted successfully", "is-warning");
 
     let currentPage = getPage();
 
@@ -18,12 +21,11 @@ const removeForecast = (id: string) =>
         setPage(currentPage);
     }
 
-    if (filtered.length === 0){
+    if (filtered.length === 0) {
         setPage(1);
     }
 
-    pagination(readStorage());
-
-}
+    pagination(readStorage(), getPage());
+};
 
 export default removeForecast;

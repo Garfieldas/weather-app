@@ -11,7 +11,7 @@ const setPage = (newPage: number) => {
 }
 
 const totalPages = () => {
-    const allItems = readStorage();
+    const allItems = Object.values(readStorage());
     const totalPages = Math.ceil(allItems.length / itemsPerPage);
     return totalPages;
 }
@@ -26,10 +26,8 @@ const pagination = (data : Record<string, Weather>, newPage?: number) => {
     const end = start + itemsPerPage;
     const dataPages = dataList.slice(start, end);
     updateButtons();
-    
-    dataPages.forEach((item) => {
-        renderWeather(item);
-    })
+
+    dataPages.forEach(renderWeather);
 }
 
 export { pagination, getPage, setPage, itemsPerPage, totalPages };
