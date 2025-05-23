@@ -1,7 +1,7 @@
 import saveToStorage from "./saveToStorage";
 import readStorage from "./readStorage";
 import showNotification from "./showNotification";
-import { pagination, getPage, setPage, itemsPerPage } from "./pagination";
+import { pagination, getPage, setPage, totalPages } from "./pagination";
 
 const removeForecast = (id: string) =>
 {
@@ -12,11 +12,10 @@ const removeForecast = (id: string) =>
     forecastCard?.remove();
     showNotification('Deleted successfully', 'is-warning');
 
-    const totalPages = Math.ceil(filtered.length / itemsPerPage);
     let currentPage = getPage();
 
-    if (currentPage > totalPages && totalPages > 0) {
-        currentPage = totalPages;
+    if (currentPage > totalPages() && totalPages() > 0) {
+        currentPage = totalPages();
         setPage(currentPage);
     }
 
