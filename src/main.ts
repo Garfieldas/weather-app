@@ -10,7 +10,7 @@ const modalBackground = document.querySelector(".modal-background");
 const addForecastBtn = document.querySelector("#add-forecast-btn");
 const closeModalBtn = document.querySelector("#close-modal-btn");
 const forecastSearchInput = document.querySelector<HTMLInputElement>("#forecast-search-input");
-const searchForecastBtn = document.querySelector("#search-forecast-btn");
+const searchForecastBtn = document.querySelector<HTMLButtonElement>("#search-forecast-btn");
 const searchBar = document.querySelector<HTMLInputElement>("#search-bar");
 const searchBarBtn = document.querySelector("#searchBarBtn");
 
@@ -19,14 +19,16 @@ export const previousBtn = document.querySelector<HTMLElement>(".pagination-prev
 
 window.addEventListener("load", () => {
   const previousForecasts = readStorage();
+  if (previousForecasts){
   pagination(previousForecasts);
+  }
   const seconds = 120 * 1000;
   setInterval(updateForecasts, seconds);
 });
 
 searchBar?.addEventListener("keydown", (e) => {
   if (e instanceof KeyboardEvent && e.key === "Enter") {
-    const query = searchBar.value;
+    const query = searchBar!.value;
     performSearch(query);
     searchBar.value = "";
   }
@@ -57,6 +59,12 @@ addForecastBtn?.addEventListener("click", () => {
 
 closeModalBtn?.addEventListener("click", () => closeModal());
 modalBackground?.addEventListener("click", () => closeModal());
+
+forecastSearchInput?.addEventListener("keydown", (e) => {
+  if (e.key === 'Enter'){
+    searchForecastBtn?.click();
+  }
+})
 
 searchForecastBtn?.addEventListener("click", async () => {
   const search = forecastSearchInput?.value;
