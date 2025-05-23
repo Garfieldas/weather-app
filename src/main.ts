@@ -5,12 +5,15 @@ import saveToStorage from "./saveToStorage";
 import readStorage from "./readStorage";
 import showNotification from "./showNotification";
 import {pagination, getPage, setPage} from "./pagination";
+import { performSearch } from "./search";
 
 const modalBackground = document.querySelector('.modal-background');
 const addForecastBtn = document.querySelector('#add-forecast-btn');
 const closeModalBtn = document.querySelector('#close-modal-btn');
 const forecastSearchInput = document.querySelector<HTMLInputElement>('#forecast-search-input');
 const searchForecastBtn = document.querySelector('#search-forecast-btn');
+const searchBar = document.querySelector<HTMLInputElement>('#search-bar');
+const searchBarBtn = document.querySelector('#searchBarBtn');
 
 export const nextBtn = document.querySelector<HTMLElement>('.pagination-next');
 export const previousBtn = document.querySelector<HTMLElement>('.pagination-previous');
@@ -21,6 +24,21 @@ window.addEventListener("load", () => {
         pagination(previousForecasts);
     }
 });
+
+searchBar?.addEventListener('keydown', (e) => {
+    if (e instanceof KeyboardEvent &&  e.key === 'Enter'){
+
+        const query = searchBar.value;
+        performSearch(query);
+        searchBar.value = '';
+    }
+    });
+
+searchBarBtn?.addEventListener('click', () => {
+        const query = searchBar!.value;
+        performSearch(query);
+        searchBar!.value = '';
+})
 
 nextBtn?.addEventListener("click", () => {
     const nextPage = getPage() + 1;
